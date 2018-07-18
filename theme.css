@@ -1,0 +1,22 @@
+html,body {
+    height: 100%;
+    font-size: 1vh;
+}
+
+.page_header {
+    height: 10%;
+    overflow: hidden;
+}
+
+.page_main {
+    height: 80%;
+    overflow-y: scroll;
+}
+
+.page_footer {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
