@@ -1,15 +1,32 @@
 html,body {
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
+    width: 100%;
     height: 100%;
-    font-size: 1vh;
+    overflow: hidden;
+}
+@media screen and (max-width: 540px) {
+    html,body {
+      font-size: 2vw;
+    }
+}
+
+pre {
+    white-space: pre-wrap ;
 }
 
 .page_header {
-    height: 10%;
+    height: 15%;
     overflow: hidden;
 }
 
+.page_header a {
+    text-decoration: none;
+}
+
 .page_main {
-    height: 80%;
+    height: 75%;
     overflow-y: scroll;
 }
 
