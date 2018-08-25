@@ -28,6 +28,7 @@ pre {
 .page_main {
     height: 70%;
     overflow-y: scroll;
+    font-size: 150%;
 }
 
 .page_footer {
