@@ -11,7 +11,7 @@ export interface BlogsState {
   blogs: StoreData<Array<Blog>>;
 }
 
-const initialState: BlogsState = {
+export const initialState: BlogsState = {
   blogs: {
     data: [],
     loading: false,
