@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`
+});
+
 module.exports = {
   plugins: [
     "gatsby-plugin-react-helmet",
@@ -41,7 +45,6 @@ module.exports = {
         "@styles": `${__dirname}/src/styles`
       }
     },
-    "gatsby-transformer-typescript-css-modules",
     {
       resolve: "gatsby-plugin-google-analytics",
       options: {
@@ -53,6 +56,7 @@ module.exports = {
       options: {
         postCssPlugins: [require(`postcss-preset-env`)({ stage: 0 })]
       }
-    }
+    },
+    "gatsby-transformer-typescript-css-modules"
   ]
 };
