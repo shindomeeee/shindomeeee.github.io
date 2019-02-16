@@ -17,8 +17,11 @@
       "@containers/*": ["./src/containers/*"],
       "@states/*": ["./src/states/*"],
       "@thunks/*": ["./src/thunks/*"],
-      "@stores/*": ["./src/stores/*"]
+      "@stores/*": ["./src/stores/*"],
+      "@styles/*": ["./src/styles/*"]
     }
   },
-  "include": ["./**/*"]
+  "include": ["./**/*"],
+  "strict": true,
+  "esModuleInterop": false
 }
