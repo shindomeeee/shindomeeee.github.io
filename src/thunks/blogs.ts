@@ -35,6 +35,22 @@ const actionCreator = actionCreatorFactory();
 const createAsync = asyncFactory<Array<Blog>>(actionCreator);
 
 export const fetchBlogs = createAsync("THUNKS_FETCH_BLOGS", async () => {
+  if (process.env.NODE_ENV !== "production") {
+    return [
+      {
+        id: 1,
+        title: "aaaaaaa",
+        url: "http://example.com",
+        created_at: new Date("2014-10-02T15:01:23.045Z")
+      },
+      {
+        id: 2,
+        title: "bbbbbbb",
+        url: "http://example.com",
+        created_at: new Date("2014-11-02T15:01:23.045Z")
+      }
+    ];
+  }
   try {
     const res = await axios.get(fireStoreUris.blogs);
     const json: BlogsJson = res.data;
