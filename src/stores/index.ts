@@ -8,7 +8,7 @@ export interface AppState {
 }
 
 const createCompose =
-  process.env.WWW_ENV === "production"
+  process.env.NODE_ENV === "production"
     ? compose(applyMiddleware(thunk))
     : compose(
         applyMiddleware(thunk),
