@@ -2,6 +2,7 @@
   height: 100%;
   display: flex;
   justify-content: center;
+  background: linear-gradient(#1ea0ff, white);
 }
 
 .main {
@@ -11,6 +12,7 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: bottom;
+  background-color: white;
 }
 
 @media (--mobileSize) {
