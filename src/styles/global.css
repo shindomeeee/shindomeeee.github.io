@@ -1,6 +1,12 @@
 body {
-  margin: 0;
   height: 100vh;
+  margin: 0;
+}
+
+@media (--pcWidthMobileHeightScreenSize) {
+  body {
+    height: var(--mobileHeight);
+  }
 }
 
 body > div[id="___gatsby"],
