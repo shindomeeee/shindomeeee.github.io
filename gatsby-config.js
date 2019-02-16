@@ -41,6 +41,12 @@ module.exports = {
         "@styles": `${__dirname}/src/styles`
       }
     },
-    "gatsby-transformer-typescript-css-modules"
+    "gatsby-transformer-typescript-css-modules",
+    {
+      resolve: "gatsby-plugin-google-analytics",
+      options: {
+        trackingId: "UA-124571274-1"
+      }
+    }
   ]
 };
