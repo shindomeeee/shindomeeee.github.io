@@ -1,2 +1,2 @@
 export const wrapper: string;
-export const wrappervsdfew: string;
+export const main: string;

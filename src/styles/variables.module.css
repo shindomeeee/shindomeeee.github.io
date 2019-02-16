@@ -1,0 +1,5 @@
+:root {
+  --mobileWidth: 500px;
+}
+
+@custom-media --mobileSize screen and (max-width: 500px);

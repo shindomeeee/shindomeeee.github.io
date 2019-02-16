@@ -47,6 +47,12 @@ module.exports = {
       options: {
         trackingId: "UA-124571274-1"
       }
+    },
+    {
+      resolve: `gatsby-plugin-postcss`,
+      options: {
+        postCssPlugins: [require(`postcss-preset-env`)({ stage: 0 })]
+      }
     }
   ]
 };
