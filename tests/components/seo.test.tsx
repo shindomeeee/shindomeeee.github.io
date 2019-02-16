@@ -9,7 +9,7 @@ describe("SEO Component", () => {
   test("default values (not props)", () => {
     const { seoDefines } = require("@defines/seo");
 
-    const { SEO } = require("@components/seo");
+    const { SEO } = require("@components/common/seo");
     const seoComponent = shallow(<SEO />);
     const seoElement = seoComponent.getElement();
 
@@ -31,7 +31,7 @@ describe("SEO Component", () => {
   test("change lang props", () => {
     const lang = "en";
 
-    const { SEO } = require("@components/seo");
+    const { SEO } = require("@components/common/seo");
     const seoComponent = shallow(<SEO lang={lang} />);
     const seoElement = seoComponent.getElement();
 
@@ -42,7 +42,7 @@ describe("SEO Component", () => {
     const description = "テスト説明";
     const { seoDefines } = require("@defines/seo");
 
-    const { SEO } = require("@components/seo");
+    const { SEO } = require("@components/common/seo");
     const seoComponent = shallow(<SEO description={description} />);
     const seoElement = seoComponent.getElement();
 
@@ -62,7 +62,7 @@ describe("SEO Component", () => {
     const title = "テスト説明";
     const { seoDefines } = require("@defines/seo");
 
-    const { SEO } = require("@components/seo");
+    const { SEO } = require("@components/common/seo");
     const seoComponent = shallow(<SEO title={title} />);
     const seoElement = seoComponent.getElement();
 
@@ -82,7 +82,7 @@ describe("SEO Component", () => {
     const author = "テストユーザ";
     const { seoDefines } = require("@defines/seo");
 
-    const { SEO } = require("@components/seo");
+    const { SEO } = require("@components/common/seo");
     const seoComponent = shallow(<SEO author={author} />);
     const seoElement = seoComponent.getElement();
 
@@ -102,7 +102,7 @@ describe("SEO Component", () => {
     const keywords = ["テストワード1", "テストワード2"];
     const { seoDefines } = require("@defines/seo");
 
-    const { SEO } = require("@components/seo");
+    const { SEO } = require("@components/common/seo");
     const seoComponent = shallow(<SEO keywords={keywords} />);
     const seoElement = seoComponent.getElement();
 
@@ -123,7 +123,7 @@ describe("SEO Component", () => {
     const meta = [{ name: "generator", content: "Frontweaver 8.2" }];
     const { seoDefines } = require("@defines/seo");
 
-    const { SEO } = require("@components/seo");
+    const { SEO } = require("@components/common/seo");
     const seoComponent = shallow(<SEO meta={meta} />);
     const seoElement = seoComponent.getElement();
 
@@ -159,7 +159,7 @@ describe("SEO Component (change defines)", () => {
       seoDefines: mockSeoDefines
     }));
 
-    const { SEO } = require("@components/seo");
+    const { SEO } = require("@components/common/seo");
     const seoComponent = shallow(<SEO />);
     const seoElement = seoComponent.getElement();
 

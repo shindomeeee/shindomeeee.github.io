@@ -12,7 +12,12 @@
       "@pages/*": ["./src/pages/*"],
       "@images/*": ["./src/images/*"],
       "@components/*": ["./src/components/*"],
-      "@defines/*": ["./src/defines/*"]
+      "@defines/*": ["./src/defines/*"],
+      "@actions/*": ["./src/actions/*"],
+      "@containers/*": ["./src/containers/*"],
+      "@states/*": ["./src/states/*"],
+      "@thunks/*": ["./src/thunks/*"],
+      "@stores/*": ["./src/stores/*"]
     }
   },
   "include": ["./**/*"]

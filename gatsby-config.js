@@ -34,7 +34,12 @@ module.exports = {
         "@pages": path.join(__dirname, "src/pages"),
         "@images": path.join(__dirname, "src/images"),
         "@components": path.join(__dirname, "src/components"),
-        "@defines": path.join(__dirname, "src/defines")
+        "@defines": path.join(__dirname, "src/defines"),
+        "@actions": path.join(__dirname, "src/actions"),
+        "@containers": path.join(__dirname, "src/containers"),
+        "@states": path.join(__dirname, "src/states"),
+        "@thunks": path.join(__dirname, "src/thunks"),
+        "@stores": path.join(__dirname, "src/stores")
       }
     }
   ]
