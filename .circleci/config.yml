@@ -20,3 +20,6 @@ jobs:
       - run:
           name: send-coverage-report
           command: cat ./coverage/lcov.info | ./node_modules/codeclimate-test-reporter/bin/codeclimate.js
+      - run:
+          name: build
+          command: npm run build

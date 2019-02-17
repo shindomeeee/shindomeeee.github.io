@@ -26,6 +26,13 @@ yarn test
 yarn coverage
 ```
 
+## created css modules typed
+
+```
+# run watch mode
+yarn tcm
+```
+
 ## badges
 
 [![CircleCI](https://circleci.com/gh/shindomeeee/shindomeeee.github.io/tree/develop.svg?style=svg)](https://circleci.com/gh/shindomeeee/shindomeeee.github.io/tree/develop)

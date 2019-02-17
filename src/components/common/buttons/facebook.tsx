@@ -3,13 +3,15 @@ import * as React from "react";
 type Props = {};
 type State = {
   loading: boolean;
+  href: string;
 };
 
 export class Facebook extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      loading: true
+      loading: true,
+      href: ""
     };
   }
 
@@ -25,7 +27,8 @@ export class Facebook extends React.Component<Props, State> {
       }&autoLogAppEvents=1`;
       fjs.parentNode.insertBefore(js, fjs);
       this.setState({
-        loading: false
+        loading: false,
+        href: location.href
       });
     })(document, "facebook-jssdk");
   }
@@ -34,7 +37,7 @@ export class Facebook extends React.Component<Props, State> {
     return (
       <div
         className="fb-share-button"
-        data-href={location.href}
+        data-href={this.state.href}
         data-layout="button_count"
         data-size="small"
         data-mobile-iframe="true"

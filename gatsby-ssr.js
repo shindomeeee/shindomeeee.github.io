@@ -5,3 +5,8 @@
  */
 
 // You can delete this file if you're not using it
+import "@styles/variables.css";
+import "@styles/global.css";
+
+import { provider } from "./provider";
+export const wrapRootElement = provider;
