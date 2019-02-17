@@ -4,8 +4,8 @@ jobs:
     working_directory: ~/project
     docker:
       - image: node:alpine
-      environment:
-        TZ: Asia/Tokyo
+        environment:
+          TZ: Asia/Tokyo
     steps:
       - checkout
       - run:
