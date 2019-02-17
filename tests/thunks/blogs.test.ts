@@ -100,6 +100,140 @@ describe("THUNKS_FETCH_BLOGS when return set state", () => {
     ]);
   });
 
+  test("check nextPageToken payload (params)", async () => {
+    process.env.NODE_ENV = "production";
+    jest.mock("axios");
+    const axios = require("axios");
+    axios.get.mockResolvedValue({
+      data: {
+        documents: [
+          {
+            fields: {
+              id: {
+                integerValue: "1"
+              },
+              title: {
+                stringValue: "blog name1"
+              },
+              url: {
+                stringValue: "https://example.com"
+              },
+              tags: {
+                arrayValue: {
+                  values: [
+                    { stringValue: "テストイベント1" },
+                    { stringValue: "テストイベント2" }
+                  ]
+                }
+              },
+              created_at: {
+                timestampValue: "2014-10-02T15:01:23.045123Z"
+              }
+            }
+          }
+        ],
+        nextPageToken: null
+      }
+    });
+
+    const store = mockStore({});
+    const { fetchBlogs } = require("@thunks/blogs");
+
+    await store.dispatch(fetchBlogs.action("http://api.example.com"));
+    const actions = store.getActions();
+    expect(actions).toEqual([
+      {
+        type: fetchBlogs.async.started.type,
+        payload: "http://api.example.com"
+      },
+      {
+        type: fetchBlogs.async.done.type,
+        payload: {
+          params: "http://api.example.com",
+          result: {
+            blogs: [
+              {
+                id: 1,
+                title: "blog name1",
+                url: "https://example.com",
+                tags: ["テストイベント1", "テストイベント2"],
+                created_at: "2014年10月3日"
+              }
+            ],
+            nextPageToken: null
+          }
+        }
+      }
+    ]);
+  });
+
+  test("check nextPageToken in response json", async () => {
+    process.env.NODE_ENV = "production";
+    jest.mock("axios");
+    const axios = require("axios");
+    axios.get.mockResolvedValue({
+      data: {
+        documents: [
+          {
+            fields: {
+              id: {
+                integerValue: "1"
+              },
+              title: {
+                stringValue: "blog name1"
+              },
+              url: {
+                stringValue: "https://example.com"
+              },
+              tags: {
+                arrayValue: {
+                  values: [
+                    { stringValue: "テストイベント1" },
+                    { stringValue: "テストイベント2" }
+                  ]
+                }
+              },
+              created_at: {
+                timestampValue: "2014-10-02T15:01:23.045123Z"
+              }
+            }
+          }
+        ],
+        nextPageToken: "http://api.test.com"
+      }
+    });
+
+    const store = mockStore({});
+    const { fetchBlogs } = require("@thunks/blogs");
+
+    await store.dispatch(fetchBlogs.action());
+    const actions = store.getActions();
+    expect(actions).toEqual([
+      {
+        type: fetchBlogs.async.started.type,
+        payload: undefined
+      },
+      {
+        type: fetchBlogs.async.done.type,
+        payload: {
+          params: undefined,
+          result: {
+            blogs: [
+              {
+                id: 1,
+                title: "blog name1",
+                url: "https://example.com",
+                tags: ["テストイベント1", "テストイベント2"],
+                created_at: "2014年10月3日"
+              }
+            ],
+            nextPageToken: "http://api.test.com"
+          }
+        }
+      }
+    ]);
+  });
+
   test("fetch error", async () => {
     process.env.NODE_ENV = "production";
     jest.mock("axios");
