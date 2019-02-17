@@ -53,6 +53,14 @@ describe("THUNKS_FETCH_BLOGS when return set state", () => {
               url: {
                 stringValue: "https://example.com"
               },
+              tags: {
+                arrayValue: {
+                  values: [
+                    { stringValue: "テストイベント1" },
+                    { stringValue: "テストイベント2" }
+                  ]
+                }
+              },
               created_at: {
                 timestampValue: "2014-10-02T15:01:23.045123Z"
               }
@@ -78,6 +86,7 @@ describe("THUNKS_FETCH_BLOGS when return set state", () => {
               id: 1,
               title: "blog name1",
               url: "https://example.com",
+              tags: ["テストイベント1", "テストイベント2"],
               created_at: new Date("2014-10-02T15:01:23.045Z")
             }
           ]
@@ -132,12 +141,14 @@ describe("THUNKS_FETCH_BLOGS when return set state", () => {
               id: 1,
               title: "aaaaaaa",
               url: "http://example.com",
+              tags: ["aaa", "aaa"],
               created_at: new Date("2014-10-02T15:01:23.045Z")
             },
             {
               id: 2,
               title: "bbbbbbb",
               url: "http://example.com",
+              tags: ["bbb", "bbb"],
               created_at: new Date("2014-11-02T15:01:23.045Z")
             }
           ]

@@ -7,6 +7,7 @@ export interface Blog {
   id: number;
   title: string;
   url: string;
+  tags: string[];
   created_at: Date;
 }
 
@@ -22,6 +23,11 @@ export interface BlogsJson {
         };
         url: {
           stringValue: string;
+        };
+        tags: {
+          arrayValue: {
+            values: [{ stringValue: string }];
+          };
         };
         created_at: {
           timestampValue: string;
@@ -41,12 +47,14 @@ export const fetchBlogs = createAsync("THUNKS_FETCH_BLOGS", async () => {
         id: 1,
         title: "aaaaaaa",
         url: "http://example.com",
+        tags: ["aaa", "aaa"],
         created_at: new Date("2014-10-02T15:01:23.045Z")
       },
       {
         id: 2,
         title: "bbbbbbb",
         url: "http://example.com",
+        tags: ["bbb", "bbb"],
         created_at: new Date("2014-11-02T15:01:23.045Z")
       }
     ];
@@ -58,6 +66,9 @@ export const fetchBlogs = createAsync("THUNKS_FETCH_BLOGS", async () => {
       id: +document.fields.id.integerValue,
       title: document.fields.title.stringValue,
       url: document.fields.url.stringValue,
+      tags: document.fields.tags.arrayValue.values.map(
+        value => value.stringValue
+      ),
       created_at: new Date(document.fields.created_at.timestampValue)
     }));
   } catch (error) {
