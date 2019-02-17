@@ -5,6 +5,7 @@ import { AppActions } from "@containers/index";
 import { Facebook } from "@components/common/buttons/facebook";
 import { Twitter } from "@components/common/buttons/twitter";
 import { Blogs } from "@components/index/blogs";
+import headerSvg from "@images/header.svg";
 
 type Props = AppActions & AppState;
 
@@ -12,7 +13,13 @@ export const Wrapper = (props: Props) => {
   return (
     <div className={style.wrapper}>
       <div className={style.siteContent}>
-        <header className={style.header}>shin・DO・meeee</header>
+        <header className={style.header}>
+          <object
+            className={style.headerSvg}
+            type="image/svg+xml"
+            data={headerSvg}
+          />
+        </header>
         <main className={style.main}>
           <Blogs {...props} />
         </main>
