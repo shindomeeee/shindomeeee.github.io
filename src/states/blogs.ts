@@ -8,12 +8,18 @@ export interface StoreData<T> {
 }
 
 export interface BlogsState {
-  blogs: StoreData<Array<Blog>>;
+  blogs: StoreData<{
+    blogs: Array<Blog>;
+    nextPageToken: string | null;
+  }>;
 }
 
 export const initialState: BlogsState = {
   blogs: {
-    data: [],
+    data: {
+      blogs: [],
+      nextPageToken: null
+    },
     loading: false,
     error: null
   }

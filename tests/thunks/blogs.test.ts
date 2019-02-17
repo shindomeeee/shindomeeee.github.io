@@ -14,7 +14,8 @@ describe("THUNKS_FETCH_BLOGS when return set state", () => {
     const axios = require("axios");
     axios.get.mockResolvedValue({
       data: {
-        documents: []
+        documents: [],
+        nextPageToken: null
       }
     });
 
@@ -29,7 +30,7 @@ describe("THUNKS_FETCH_BLOGS when return set state", () => {
         type: fetchBlogs.async.done.type,
         payload: {
           params: undefined,
-          result: []
+          result: { blogs: [], nextPageToken: null }
         }
       }
     ]);
@@ -66,7 +67,8 @@ describe("THUNKS_FETCH_BLOGS when return set state", () => {
               }
             }
           }
-        ]
+        ],
+        nextPageToken: null
       }
     });
 
@@ -81,15 +83,18 @@ describe("THUNKS_FETCH_BLOGS when return set state", () => {
         type: fetchBlogs.async.done.type,
         payload: {
           params: undefined,
-          result: [
-            {
-              id: 1,
-              title: "blog name1",
-              url: "https://example.com",
-              tags: ["テストイベント1", "テストイベント2"],
-              created_at: new Date("2014-10-02T15:01:23.045Z")
-            }
-          ]
+          result: {
+            blogs: [
+              {
+                id: 1,
+                title: "blog name1",
+                url: "https://example.com",
+                tags: ["テストイベント1", "テストイベント2"],
+                created_at: new Date("2014-10-02T15:01:23.045Z")
+              }
+            ],
+            nextPageToken: null
+          }
         }
       }
     ]);
@@ -136,22 +141,25 @@ describe("THUNKS_FETCH_BLOGS when return set state", () => {
         type: fetchBlogs.async.done.type,
         payload: {
           params: undefined,
-          result: [
-            {
-              id: 1,
-              title: "aaaaaaa",
-              url: "http://example.com",
-              tags: ["aaa", "aaa"],
-              created_at: new Date("2014-10-02T15:01:23.045Z")
-            },
-            {
-              id: 2,
-              title: "bbbbbbb",
-              url: "http://example.com",
-              tags: ["bbb", "bbb"],
-              created_at: new Date("2014-11-02T15:01:23.045Z")
-            }
-          ]
+          result: {
+            blogs: [
+              {
+                id: 1,
+                title: "aaaaaaa",
+                url: "http://example.com",
+                tags: ["aaa", "aaa"],
+                created_at: new Date("2014-10-02T15:01:23.045Z")
+              },
+              {
+                id: 2,
+                title: "bbbbbbb",
+                url: "http://example.com",
+                tags: ["bbb", "bbb"],
+                created_at: new Date("2014-11-02T15:01:23.045Z")
+              }
+            ],
+            nextPageToken: null
+          }
         }
       }
     ]);

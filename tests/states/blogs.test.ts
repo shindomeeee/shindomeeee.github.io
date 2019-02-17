@@ -7,7 +7,13 @@ describe("blogs reducer", () => {
       blogsReducer(initialState, {
         type: fetchBlogs.async.started.type
       })
-    ).toEqual({ blogs: { data: [], error: null, loading: true } });
+    ).toEqual({
+      blogs: {
+        data: { blogs: [], nextPageToken: null },
+        error: null,
+        loading: true
+      }
+    });
   });
 
   test("fetchBlogs.async.failed", () => {
@@ -20,7 +26,13 @@ describe("blogs reducer", () => {
         // @ts-ignore
         payload
       })
-    ).toEqual({ blogs: { data: [], error: payload.error, loading: false } });
+    ).toEqual({
+      blogs: {
+        data: { blogs: [], nextPageToken: null },
+        error: payload.error,
+        loading: false
+      }
+    });
   });
 
   test("fetchBlogs.async.done", () => {

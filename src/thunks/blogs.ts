@@ -35,44 +35,60 @@ export interface BlogsJson {
       };
     }
   ];
+  nextPageToken?: string;
 }
 
 const actionCreator = actionCreatorFactory();
-const createAsync = asyncFactory<Array<Blog>>(actionCreator);
+const createAsync = asyncFactory<{
+  blogs: Array<Blog>;
+  nextPageToken: string | null;
+}>(actionCreator);
 
-export const fetchBlogs = createAsync("THUNKS_FETCH_BLOGS", async () => {
-  if (process.env.NODE_ENV !== "production") {
-    return [
-      {
-        id: 1,
-        title: "aaaaaaa",
-        url: "http://example.com",
-        tags: ["aaa", "aaa"],
-        created_at: new Date("2014-10-02T15:01:23.045Z")
-      },
-      {
-        id: 2,
-        title: "bbbbbbb",
-        url: "http://example.com",
-        tags: ["bbb", "bbb"],
-        created_at: new Date("2014-11-02T15:01:23.045Z")
-      }
-    ];
+export const fetchBlogs = createAsync(
+  "THUNKS_FETCH_BLOGS",
+  async (nextPageToken?: string) => {
+    if (process.env.NODE_ENV !== "production") {
+      return {
+        blogs: [
+          {
+            id: 1,
+            title: "aaaaaaa",
+            url: "http://example.com",
+            tags: ["aaa", "aaa"],
+            created_at: new Date("2014-10-02T15:01:23.045Z")
+          },
+          {
+            id: 2,
+            title: "bbbbbbb",
+            url: "http://example.com",
+            tags: ["bbb", "bbb"],
+            created_at: new Date("2014-11-02T15:01:23.045Z")
+          }
+        ],
+        nextPageToken: null
+      };
+    }
+    try {
+      const api = nextPageToken
+        ? `${fireStoreUris.blogs}&pageToken=${nextPageToken}`
+        : fireStoreUris.blogs;
+      const res = await axios.get(api);
+      const json: BlogsJson = res.data;
+      return {
+        blogs: json.documents.map(document => ({
+          id: +document.fields.id.integerValue,
+          title: document.fields.title.stringValue,
+          url: document.fields.url.stringValue,
+          tags: document.fields.tags.arrayValue.values.map(
+            value => value.stringValue
+          ),
+          created_at: new Date(document.fields.created_at.timestampValue)
+        })),
+        nextPageToken: json.nextPageToken ? json.nextPageToken : null
+      };
+    } catch (error) {
+      console.error(error);
+      throw new Error("don't blogs fetch");
+    }
   }
-  try {
-    const res = await axios.get(fireStoreUris.blogs);
-    const json: BlogsJson = res.data;
-    return json.documents.map(document => ({
-      id: +document.fields.id.integerValue,
-      title: document.fields.title.stringValue,
-      url: document.fields.url.stringValue,
-      tags: document.fields.tags.arrayValue.values.map(
-        value => value.stringValue
-      ),
-      created_at: new Date(document.fields.created_at.timestampValue)
-    }));
-  } catch (error) {
-    console.error(error);
-    throw new Error("don't blogs fetch");
-  }
-});
+);
