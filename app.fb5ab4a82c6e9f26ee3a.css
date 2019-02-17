@@ -1,0 +1,1 @@
+:root{--mobileWidth:500px;--mobileHeight:840px}body{height:100vh;margin:0}@media screen and (min-width:500px) and (max-height:840px){body{height:840px;height:var(--mobileHeight)}}body>div[id=___gatsby],body>div[id=___gatsby]>div{height:100%}
