@@ -90,7 +90,7 @@ describe("THUNKS_FETCH_BLOGS when return set state", () => {
                 title: "blog name1",
                 url: "https://example.com",
                 tags: ["テストイベント1", "テストイベント2"],
-                created_at: new Date("2014-10-02T15:01:23.045Z")
+                created_at: "2014年10月3日"
               }
             ],
             nextPageToken: null
@@ -148,14 +148,14 @@ describe("THUNKS_FETCH_BLOGS when return set state", () => {
                 title: "aaaaaaa",
                 url: "http://example.com",
                 tags: ["aaa", "aaa"],
-                created_at: new Date("2014-10-02T15:01:23.045Z")
+                created_at: "2014年10月3日"
               },
               {
                 id: 2,
                 title: "bbbbbbb",
                 url: "http://example.com",
                 tags: ["bbb", "bbb"],
-                created_at: new Date("2014-11-02T15:01:23.045Z")
+                created_at: "2014年10月3日"
               }
             ],
             nextPageToken: null
