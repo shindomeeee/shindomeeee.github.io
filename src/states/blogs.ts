@@ -51,7 +51,11 @@ export const blogsReducer = reducerWithInitialState(initialState)
       ...state,
       blogs: {
         ...state.blogs,
-        data: payload.result,
+        data: {
+          ...state.blogs.data,
+          ...payload.result,
+          blogs: [...state.blogs.data.blogs, ...payload.result.blogs]
+        },
         loading: false,
         error: null
       }

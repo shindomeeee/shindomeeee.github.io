@@ -8,7 +8,7 @@ export interface Blog {
   title: string;
   url: string;
   tags: string[];
-  created_at: Date;
+  created_at: string;
 }
 
 export interface BlogsJson {

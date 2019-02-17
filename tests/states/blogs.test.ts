@@ -37,14 +37,19 @@ describe("blogs reducer", () => {
 
   test("fetchBlogs.async.done", () => {
     const payload = {
-      result: [
-        {
-          id: 1,
-          title: "blog name",
-          url: "http://sample.com",
-          created_at: new Date("2014-10-02T15:01:23.045Z")
-        }
-      ]
+      result: {
+        blogs: [
+          {
+            id: 1,
+            title: "blog name",
+            url: "http://sample.com",
+            tags: ["サンプル1", "サンプル2"],
+            created_at: "2014年10月3日"
+          }
+        ],
+        // @ts-ignore
+        nextPageToken: null
+      }
     };
     expect(
       blogsReducer(initialState, {

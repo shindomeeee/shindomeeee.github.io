@@ -8,7 +8,7 @@ import { Wrapper } from "@components/index/wrapper";
 export interface AppActions {
   actions: {
     blogs: {
-      fetchBlogs: () => Action<any>;
+      fetchBlogs: (nextPageToken: string) => Action<any>;
     };
   };
 }
@@ -20,7 +20,8 @@ export const mapStateToProps = (state: AppState) => {
 export const mapDispatchToProps = (dispatch: Dispatch) => ({
   actions: {
     blogs: {
-      fetchBlogs: () => fetchBlogs.action()
+      fetchBlogs: (nextPageToken: string) =>
+        dispatch<any>(fetchBlogs.action(nextPageToken))
     }
   }
 });
@@ -28,4 +29,5 @@ export const mapDispatchToProps = (dispatch: Dispatch) => ({
 export const Container = connect(
   mapStateToProps,
   mapDispatchToProps
+  // @ts-ignore
 )(Wrapper);
