@@ -22,7 +22,7 @@ export const SEO = (props: Props) => {
         lang: props.lang
       }}
       title={props.title}
-      titleTemplate={`%s | ${props.title}`}
+      titleTemplate={props.title}
       meta={[
         {
           name: `description`,

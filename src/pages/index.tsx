@@ -9,7 +9,10 @@ store.dispatch<any>(fetchBlogs.action());
 const IndexPage = () => {
   return (
     <>
-      <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+      <SEO
+        title="shin・DO・meeee"
+        keywords={[`gatsby`, `application`, `react`]}
+      />
       <Container />
     </>
   );

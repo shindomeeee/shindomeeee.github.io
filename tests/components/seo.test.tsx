@@ -25,7 +25,7 @@ describe("SEO Component", () => {
       { name: "twitter:title", content: seoDefines.title },
       { name: "twitter:description", content: seoDefines.description }
     ]);
-    expect(seoElement.props.titleTemplate).toEqual(`%s | ${seoDefines.title}`);
+    expect(seoElement.props.titleTemplate).toEqual(seoDefines.title);
   });
 
   test("change lang props", () => {
@@ -180,8 +180,6 @@ describe("SEO Component (change defines)", () => {
         content: mockSeoDefines.meta[0].content
       }
     ]);
-    expect(seoElement.props.titleTemplate).toEqual(
-      `%s | ${mockSeoDefines.title}`
-    );
+    expect(seoElement.props.titleTemplate).toEqual(mockSeoDefines.title);
   });
 });
