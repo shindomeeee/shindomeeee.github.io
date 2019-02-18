@@ -23,11 +23,7 @@ export class Facebook extends React.Component<Props, State> {
       scriptElement.src = `https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v3.1&appId=${
         process.env.FACEBOOK_APP_ID
       }&autoLogAppEvents=1`;
-      const firstScriptElement = document.getElementsByTagName("script")[0];
-      firstScriptElement.parentNode.insertBefore(
-        scriptElement,
-        firstScriptElement
-      );
+      document.body.appendChild(scriptElement);
       this.setState({
         loading: false,
         href: location.href

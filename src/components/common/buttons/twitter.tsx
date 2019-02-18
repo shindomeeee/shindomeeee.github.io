@@ -16,11 +16,7 @@ export class Twitter extends React.Component<Props, State> {
   componentDidMount() {
     const scriptElement = document.createElement("script");
     scriptElement.src = "https://platform.twitter.com/widgets.js";
-    const firstScriptElement = document.getElementsByTagName("script")[0];
-    firstScriptElement.parentNode.insertBefore(
-      scriptElement,
-      firstScriptElement
-    );
+    document.body.appendChild(scriptElement);
     this.setState({
       loading: false
     });
