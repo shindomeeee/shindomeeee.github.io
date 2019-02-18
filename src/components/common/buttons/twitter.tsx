@@ -14,16 +14,16 @@ export class Twitter extends React.Component<Props, State> {
   }
 
   componentDidMount() {
-    (d => {
-      var js,
-        fjs = d.getElementsByTagName("script")[0];
-      js = d.createElement("script");
-      js.src = "https://platform.twitter.com/widgets.js";
-      fjs.parentNode.insertBefore(js, fjs);
-      this.setState({
-        loading: false
-      });
-    })(document);
+    const scriptElement = document.createElement("script");
+    scriptElement.src = "https://platform.twitter.com/widgets.js";
+    const firstScriptElement = document.getElementsByTagName("script")[0];
+    firstScriptElement.parentNode.insertBefore(
+      scriptElement,
+      firstScriptElement
+    );
+    this.setState({
+      loading: false
+    });
   }
 
   render() {

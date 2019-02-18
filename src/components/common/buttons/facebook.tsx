@@ -16,21 +16,23 @@ export class Facebook extends React.Component<Props, State> {
   }
 
   componentDidMount() {
-    ((d, id) => {
-      var js,
-        fjs = d.getElementsByTagName("script")[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement("script");
-      js.id = id;
-      js.src = `https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v3.1&appId=${
+    const elementId = "facebook-jssdk";
+    if (!document.getElementById(elementId)) {
+      const scriptElement = document.createElement("script");
+      scriptElement.id = elementId;
+      scriptElement.src = `https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v3.1&appId=${
         process.env.FACEBOOK_APP_ID
       }&autoLogAppEvents=1`;
-      fjs.parentNode.insertBefore(js, fjs);
+      const firstScriptElement = document.getElementsByTagName("script")[0];
+      firstScriptElement.parentNode.insertBefore(
+        scriptElement,
+        firstScriptElement
+      );
       this.setState({
         loading: false,
         href: location.href
       });
-    })(document, "facebook-jssdk");
+    }
   }
 
   render() {
