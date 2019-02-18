@@ -70,7 +70,7 @@
     "serve": "gatsby serve",
     "test": "jest",
     "coverage": "jest --coverage",
-    "deploy": "gatsby build && cp -r .circleci public/.circleci && gh-pages -d public -b master",
+    "deploy": "gatsby build && gh-pages -d public -b master",
     "tcm": "tcm -p src/styles/**/*.css --watch"
   },
   "repository": {
