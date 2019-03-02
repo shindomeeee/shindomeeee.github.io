@@ -57,7 +57,8 @@ export const SEO = (props: Props) => {
         {
           name: "twitter:description",
           content: props.description
-        }
+        },
+        { property: "fb:app_id", content: process.env.FACEBOOK_APP_ID }
       ]
         .concat(
           props.keywords.length > 0
