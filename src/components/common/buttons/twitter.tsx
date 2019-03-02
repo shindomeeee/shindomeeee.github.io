@@ -5,6 +5,8 @@ type State = {
   loading: boolean;
 };
 
+const twitterSdkUrl = "https://platform.twitter.com/widgets.js";
+
 export class Twitter extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
@@ -15,7 +17,7 @@ export class Twitter extends React.Component<Props, State> {
 
   componentDidMount() {
     const scriptElement = document.createElement("script");
-    scriptElement.src = "https://platform.twitter.com/widgets.js";
+    scriptElement.src = twitterSdkUrl;
     document.body.appendChild(scriptElement);
     this.setState({
       loading: false

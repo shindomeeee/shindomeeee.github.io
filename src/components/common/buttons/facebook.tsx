@@ -6,6 +6,10 @@ type State = {
   href: string;
 };
 
+const facebookSdkUrl = `https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v3.1&appId=${
+  process.env.FACEBOOK_APP_ID
+}&autoLogAppEvents=1`;
+
 export class Facebook extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
@@ -20,9 +24,7 @@ export class Facebook extends React.Component<Props, State> {
     if (!document.getElementById(elementId)) {
       const scriptElement = document.createElement("script");
       scriptElement.id = elementId;
-      scriptElement.src = `https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v3.1&appId=${
-        process.env.FACEBOOK_APP_ID
-      }&autoLogAppEvents=1`;
+      scriptElement.src = facebookSdkUrl;
       document.body.appendChild(scriptElement);
       this.setState({
         loading: false,
