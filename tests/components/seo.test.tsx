@@ -18,12 +18,15 @@ describe("SEO Component", () => {
     expect(seoElement.props.meta).toEqual([
       { name: "description", content: seoDefines.description },
       { property: "og:title", content: seoDefines.title },
+      { property: "og:image", content: undefined },
       { property: "og:description", content: seoDefines.description },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:creator", content: seoDefines.author },
       { name: "twitter:title", content: seoDefines.title },
-      { name: "twitter:description", content: seoDefines.description }
+      { name: "twitter:description", content: seoDefines.description },
+      { property: "fb:app_id", content: undefined },
+      { name: "keywords", content: seoDefines.keywords.join(", ") }
     ]);
     expect(seoElement.props.titleTemplate).toEqual(seoDefines.title);
   });
@@ -49,12 +52,15 @@ describe("SEO Component", () => {
     expect(seoElement.props.meta).toEqual([
       { name: "description", content: description },
       { property: "og:title", content: seoDefines.title },
+      { property: "og:image", content: undefined },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:creator", content: seoDefines.author },
       { name: "twitter:title", content: seoDefines.title },
-      { name: "twitter:description", content: description }
+      { name: "twitter:description", content: description },
+      { property: "fb:app_id", content: undefined },
+      { name: "keywords", content: seoDefines.keywords.join(", ") }
     ]);
   });
 
@@ -69,12 +75,15 @@ describe("SEO Component", () => {
     expect(seoElement.props.meta).toEqual([
       { name: "description", content: seoDefines.description },
       { property: "og:title", content: title },
+      { property: "og:image", content: undefined },
       { property: "og:description", content: seoDefines.description },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:creator", content: seoDefines.author },
       { name: "twitter:title", content: title },
-      { name: "twitter:description", content: seoDefines.description }
+      { name: "twitter:description", content: seoDefines.description },
+      { property: "fb:app_id", content: undefined },
+      { name: "keywords", content: seoDefines.keywords.join(", ") }
     ]);
   });
 
@@ -89,12 +98,15 @@ describe("SEO Component", () => {
     expect(seoElement.props.meta).toEqual([
       { name: "description", content: seoDefines.description },
       { property: "og:title", content: seoDefines.title },
+      { property: "og:image", content: undefined },
       { property: "og:description", content: seoDefines.description },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:creator", content: author },
       { name: "twitter:title", content: seoDefines.title },
-      { name: "twitter:description", content: seoDefines.description }
+      { name: "twitter:description", content: seoDefines.description },
+      { property: "fb:app_id", content: undefined },
+      { name: "keywords", content: seoDefines.keywords.join(", ") }
     ]);
   });
 
@@ -109,12 +121,14 @@ describe("SEO Component", () => {
     expect(seoElement.props.meta).toEqual([
       { name: "description", content: seoDefines.description },
       { property: "og:title", content: seoDefines.title },
+      { property: "og:image", content: undefined },
       { property: "og:description", content: seoDefines.description },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:creator", content: seoDefines.author },
       { name: "twitter:title", content: seoDefines.title },
       { name: "twitter:description", content: seoDefines.description },
+      { property: "fb:app_id", content: undefined },
       { name: "keywords", content: keywords.join(", ") }
     ]);
   });
@@ -130,12 +144,15 @@ describe("SEO Component", () => {
     expect(seoElement.props.meta).toEqual([
       { name: "description", content: seoDefines.description },
       { property: "og:title", content: seoDefines.title },
+      { property: "og:image", content: undefined },
       { property: "og:description", content: seoDefines.description },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:creator", content: seoDefines.author },
       { name: "twitter:title", content: seoDefines.title },
       { name: "twitter:description", content: seoDefines.description },
+      { property: "fb:app_id", content: undefined },
+      { name: "keywords", content: seoDefines.keywords.join(", ") },
       { name: meta[0].name, content: meta[0].content }
     ]);
   });
@@ -158,6 +175,7 @@ describe("SEO Component (change defines)", () => {
     jest.doMock("@defines/seo", () => ({
       seoDefines: mockSeoDefines
     }));
+    process.env.FACEBOOK_APP_ID = "123456789";
 
     const { SEO } = require("@components/common/seo");
     const seoComponent = shallow(<SEO />);
@@ -168,12 +186,14 @@ describe("SEO Component (change defines)", () => {
     expect(seoElement.props.meta).toEqual([
       { name: "description", content: mockSeoDefines.description },
       { property: "og:title", content: mockSeoDefines.title },
+      { property: "og:image", content: undefined },
       { property: "og:description", content: mockSeoDefines.description },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:creator", content: mockSeoDefines.author },
       { name: "twitter:title", content: mockSeoDefines.title },
       { name: "twitter:description", content: mockSeoDefines.description },
+      { property: "fb:app_id", content: process.env.FACEBOOK_APP_ID },
       { name: "keywords", content: mockSeoDefines.keywords.join(", ") },
       {
         name: mockSeoDefines.meta[0].name,

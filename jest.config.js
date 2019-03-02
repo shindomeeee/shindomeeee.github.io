@@ -5,7 +5,8 @@ module.exports = {
   roots: ["<rootDir>/tests"],
   transform: {
     "^.+\\.ts?$": "ts-jest",
-    "^.+\\.tsx?$": "ts-jest"
+    "^.+\\.tsx?$": "ts-jest",
+    ".+\\.(png)$": "jest-transform-stub"
   },
   testMatch: ["**/*.test.ts", "**/*.test.tsx"],
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json"],
