@@ -115,7 +115,7 @@ describe("SEO Component", () => {
       { name: "twitter:creator", content: seoDefines.author },
       { name: "twitter:title", content: seoDefines.title },
       { name: "twitter:description", content: seoDefines.description },
-      { name: "keywords", content: keywords.join(`, `) }
+      { name: "keywords", content: keywords.join(", ") }
     ]);
   });
 
@@ -174,7 +174,7 @@ describe("SEO Component (change defines)", () => {
       { name: "twitter:creator", content: mockSeoDefines.author },
       { name: "twitter:title", content: mockSeoDefines.title },
       { name: "twitter:description", content: mockSeoDefines.description },
-      { name: "keywords", content: mockSeoDefines.keywords.join(`, `) },
+      { name: "keywords", content: mockSeoDefines.keywords.join(", ") },
       {
         name: mockSeoDefines.meta[0].name,
         content: mockSeoDefines.meta[0].content

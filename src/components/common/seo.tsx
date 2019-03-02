@@ -25,43 +25,43 @@ export const SEO = (props: Props) => {
       titleTemplate={props.title}
       meta={[
         {
-          name: `description`,
+          name: "description",
           content: props.description
         },
         {
-          property: `og:title`,
+          property: "og:title",
           content: props.title
         },
         {
-          property: `og:description`,
+          property: "og:description",
           content: props.description
         },
         {
-          property: `og:type`,
-          content: `website`
+          property: "og:type",
+          content: "website"
         },
         {
-          name: `twitter:card`,
-          content: `summary`
+          name: "twitter:card",
+          content: "summary"
         },
         {
-          name: `twitter:creator`,
+          name: "twitter:creator",
           content: props.author
         },
         {
-          name: `twitter:title`,
+          name: "twitter:title",
           content: props.title
         },
         {
-          name: `twitter:description`,
+          name: "twitter:description",
           content: props.description
         }
       ]
         .concat(
           props.keywords.length > 0
             ? {
-                name: `keywords`,
-                content: props.keywords.join(`, `)
+                name: "keywords",
+                content: props.keywords.join(", ")
               }
             : []
         )
