@@ -7,19 +7,39 @@ import { Twitter } from "@components/common/buttons/twitter";
 import { Blogs } from "@components/index/blogs";
 import { Events } from "@components/index/events";
 import headerSvg from "@images/header.svg";
-import { empty } from "coverage/lcov-report/base.css";
+import footerImg from "@images/index/background.png";
+export const footerImage = new Image();
 
 type Props = AppActions & AppState;
 type State = {
   tabs: "blogs" | "events";
+  footer: {
+    imageLoading: boolean;
+  };
 };
 
 export class Wrapper extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      tabs: "blogs"
+      tabs: "blogs",
+      footer: {
+        imageLoading: true
+      }
     };
+  }
+
+  componentDidMount() {
+    if (this.state.footer.imageLoading) {
+      footerImage.onload = () => {
+        this.setState({
+          footer: {
+            imageLoading: false
+          }
+        });
+      };
+      footerImage.src = footerImg;
+    }
   }
 
   render() {
@@ -55,7 +75,11 @@ export class Wrapper extends React.Component<Props, State> {
             <Blogs {...this.props} display={this.state.tabs === "blogs"} />
             <Events {...this.props} display={this.state.tabs === "events"} />
           </main>
-          <footer className={style.footer}>
+          <footer
+            className={
+              this.state.footer.imageLoading ? style.disable : style.footer
+            }
+          >
             <nav className={style.nav}>
               <Facebook />
               <span className={style.margin} />

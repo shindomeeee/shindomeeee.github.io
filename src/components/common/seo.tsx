@@ -60,14 +60,10 @@ export const SEO = (props: Props) => {
         },
         { property: "fb:app_id", content: process.env.FACEBOOK_APP_ID }
       ]
-        .concat(
-          props.keywords.length > 0
-            ? {
-                name: "keywords",
-                content: props.keywords.join(", ")
-              }
-            : []
-        )
+        .concat({
+          name: "keywords",
+          content: props.keywords.join(", ")
+        })
         .concat(props.meta.length > 0 ? props.meta : [])}
     />
   );

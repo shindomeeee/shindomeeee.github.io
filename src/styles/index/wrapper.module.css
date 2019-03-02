@@ -102,6 +102,10 @@
   }
 }
 
+.disable {
+  display: none;
+}
+
 @keyframes footerAnimation {
   0% {
     transform: translateY(100%);

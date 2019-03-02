@@ -8,5 +8,6 @@ export const tab: string;
 export const tappedTab: string;
 export const footer: string;
 export const footerAnimation: string;
+export const disable: string;
 export const nav: string;
 export const margin: string;
