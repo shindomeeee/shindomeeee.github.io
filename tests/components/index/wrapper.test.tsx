@@ -22,10 +22,10 @@ describe("Index Wrapper Component", () => {
   });
 
   test("change self state(after image onload)", () => {
-    const { Wrapper, footerImage } = require("@components/index/wrapper");
+    const { Wrapper } = require("@components/index/wrapper");
     const wrapperComponent = shallow(<Wrapper />);
-    const spy = jest.spyOn(footerImage, "onload");
-    footerImage.onload();
+    const spy = jest.spyOn(wrapperComponent.instance().footerImage, "onload");
+    wrapperComponent.instance().footerImage.onload();
     expect(spy).toHaveBeenCalled();
     const state = wrapperComponent.state();
 

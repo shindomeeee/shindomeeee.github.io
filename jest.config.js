@@ -11,5 +11,5 @@ module.exports = {
   testMatch: ["**/*.test.ts", "**/*.test.tsx"],
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json"],
   moduleNameMapper,
-  setupTestFrameworkScriptFile: "<rootDir>/src/setupEnzyme.ts"
+  setupFilesAfterEnv: ["<rootDir>/src/setupEnzyme.ts"]
 };

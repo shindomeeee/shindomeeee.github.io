@@ -8,7 +8,6 @@ import { Blogs } from "@components/index/blogs";
 import { Events } from "@components/index/events";
 import headerSvg from "@images/header.svg";
 import footerImg from "@images/index/background.png";
-export const footerImage = new Image();
 
 type Props = AppActions & AppState;
 type State = {
@@ -19,6 +18,8 @@ type State = {
 };
 
 export class Wrapper extends React.Component<Props, State> {
+  footerImage: HTMLImageElement;
+
   constructor(props: Props) {
     super(props);
     this.state = {
@@ -31,14 +32,15 @@ export class Wrapper extends React.Component<Props, State> {
 
   componentDidMount() {
     if (this.state.footer.imageLoading) {
-      footerImage.onload = () => {
+      this.footerImage = new Image();
+      this.footerImage.onload = () => {
         this.setState({
           footer: {
             imageLoading: false
           }
         });
       };
-      footerImage.src = footerImg;
+      this.footerImage.src = footerImg;
     }
   }
 
