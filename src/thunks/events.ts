@@ -32,6 +32,31 @@ export interface EventsJson {
   nextPageToken?: string;
 }
 
+const getMockEventsData = () => {
+  const date = new Date("2014-10-02T15:01:23.045Z");
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  return {
+    events: [
+      {
+        id: 1,
+        title: "event 1",
+        url: "http://example.com",
+        created_at: `${year}年${month}月${day}日`
+      },
+      {
+        id: 2,
+        title: "event 2",
+        url: "http://example.com",
+        created_at: `${year}年${month}月${day}日`
+      }
+    ],
+    // @ts-ignore
+    nextPageToken: null
+  };
+};
+
 const actionCreator = actionCreatorFactory();
 const createAsync = asyncFactory<{
   events: Array<Event>;
@@ -42,27 +67,7 @@ export const fetchEvents = createAsync(
   "THUNKS_FETCH_EVENTS",
   async (nextPageToken?: string) => {
     if (process.env.NODE_ENV !== "production") {
-      const date = new Date("2014-10-02T15:01:23.045Z");
-      const year = date.getFullYear();
-      const month = date.getMonth() + 1;
-      const day = date.getDate();
-      return {
-        events: [
-          {
-            id: 1,
-            title: "event 1",
-            url: "http://example.com",
-            created_at: `${year}年${month}月${day}日`
-          },
-          {
-            id: 2,
-            title: "event 2",
-            url: "http://example.com",
-            created_at: `${year}年${month}月${day}日`
-          }
-        ],
-        nextPageToken: null
-      };
+      return getMockEventsData();
     }
     try {
       const api = nextPageToken

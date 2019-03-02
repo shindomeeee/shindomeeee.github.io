@@ -38,6 +38,33 @@ export interface BlogsJson {
   nextPageToken?: string;
 }
 
+const getMockBlogsData = () => {
+  const date = new Date("2014-10-02T15:01:23.045Z");
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  return {
+    blogs: [
+      {
+        id: 1,
+        title: "blog 1",
+        url: "http://example.com",
+        tags: ["aaa", "aaa"],
+        created_at: `${year}年${month}月${day}日`
+      },
+      {
+        id: 2,
+        title: "blog 2",
+        url: "http://example.com",
+        tags: ["bbb", "bbb"],
+        created_at: `${year}年${month}月${day}日`
+      }
+    ],
+    // @ts-ignore
+    nextPageToken: null
+  };
+};
+
 const actionCreator = actionCreatorFactory();
 const createAsync = asyncFactory<{
   blogs: Array<Blog>;
@@ -48,29 +75,7 @@ export const fetchBlogs = createAsync(
   "THUNKS_FETCH_BLOGS",
   async (nextPageToken?: string) => {
     if (process.env.NODE_ENV !== "production") {
-      const date = new Date("2014-10-02T15:01:23.045Z");
-      const year = date.getFullYear();
-      const month = date.getMonth() + 1;
-      const day = date.getDate();
-      return {
-        blogs: [
-          {
-            id: 1,
-            title: "blog 1",
-            url: "http://example.com",
-            tags: ["aaa", "aaa"],
-            created_at: `${year}年${month}月${day}日`
-          },
-          {
-            id: 2,
-            title: "blog 2",
-            url: "http://example.com",
-            tags: ["bbb", "bbb"],
-            created_at: `${year}年${month}月${day}日`
-          }
-        ],
-        nextPageToken: null
-      };
+      return getMockBlogsData();
     }
     try {
       const api = nextPageToken
