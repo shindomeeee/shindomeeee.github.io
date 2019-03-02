@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Helmet } from "react-helmet";
 import { seoDefines } from "@defines/seo";
+import ogpPng from "@images/ogp.png";
 
 interface Props {
   lang?: string;
@@ -32,6 +33,7 @@ export const SEO = (props: Props) => {
           property: "og:title",
           content: props.title
         },
+        { property: "og:image", content: ogpPng },
         {
           property: "og:description",
           content: props.description
