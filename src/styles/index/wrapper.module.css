@@ -61,6 +61,29 @@
   }
 }
 
+.tabs {
+  display: flex;
+  margin: 0 auto;
+  width: 87%;
+}
+
+.tab {
+  padding: 1%;
+  border: 1px solid black;
+  border-radius: 5px 5px 0 0;
+  background-color: #eeeeee;
+  cursor: pointer;
+}
+
+.tappedTab {
+  padding: 1%;
+  border: 1px solid black;
+  font-weight: bold;
+  border-radius: 5px 5px 0 0;
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
 .footer {
   display: flex;
   position: relative;

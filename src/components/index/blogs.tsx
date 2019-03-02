@@ -1,10 +1,12 @@
-import { Link } from "gatsby";
 import * as React from "react";
 import { AppState } from "@stores/index";
 import { AppActions } from "@containers/index";
 import * as style from "@styles/index/blogs.module.css";
 
-type Props = AppActions & AppState;
+type Props = AppActions &
+  AppState & {
+    display: boolean;
+  };
 
 export const Blogs = (props: Props) => {
   const blogsElement = props.blogs.blogs.data.blogs.map(blog => {
@@ -20,8 +22,7 @@ export const Blogs = (props: Props) => {
     );
   });
   return (
-    <section className={style.blogsSection}>
-      <h2>Blogs</h2>
+    <section className={props.display ? style.blogsSection : style.disable}>
       <div>{blogsElement}</div>
       <button
         className={

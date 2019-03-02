@@ -3,15 +3,14 @@ import { asyncFactory } from "typescript-fsa-redux-thunk";
 import axios from "axios";
 import { fireStoreUris } from "@defines/api";
 
-export interface Blog {
+export interface Event {
   id: number;
   title: string;
   url: string;
-  tags: string[];
   created_at: string;
 }
 
-export interface BlogsJson {
+export interface EventsJson {
   documents: [
     {
       fields: {
@@ -24,11 +23,6 @@ export interface BlogsJson {
         url: {
           stringValue: string;
         };
-        tags: {
-          arrayValue: {
-            values: [{ stringValue: string }];
-          };
-        };
         created_at: {
           timestampValue: string;
         };
@@ -40,12 +34,12 @@ export interface BlogsJson {
 
 const actionCreator = actionCreatorFactory();
 const createAsync = asyncFactory<{
-  blogs: Array<Blog>;
+  events: Array<Event>;
   nextPageToken: string | null;
 }>(actionCreator);
 
-export const fetchBlogs = createAsync(
-  "THUNKS_FETCH_BLOGS",
+export const fetchEvents = createAsync(
+  "THUNKS_FETCH_EVENTS",
   async (nextPageToken?: string) => {
     if (process.env.NODE_ENV !== "production") {
       const date = new Date("2014-10-02T15:01:23.045Z");
@@ -53,19 +47,17 @@ export const fetchBlogs = createAsync(
       const month = date.getMonth() + 1;
       const day = date.getDate();
       return {
-        blogs: [
+        events: [
           {
             id: 1,
-            title: "blog 1",
+            title: "event 1",
             url: "http://example.com",
-            tags: ["aaa", "aaa"],
             created_at: `${year}年${month}月${day}日`
           },
           {
             id: 2,
-            title: "blog 2",
+            title: "event 2",
             url: "http://example.com",
-            tags: ["bbb", "bbb"],
             created_at: `${year}年${month}月${day}日`
           }
         ],
@@ -74,13 +66,13 @@ export const fetchBlogs = createAsync(
     }
     try {
       const api = nextPageToken
-        ? `${fireStoreUris.blogs}&pageToken=${nextPageToken}`
-        : fireStoreUris.blogs;
+        ? `${fireStoreUris.events}&pageToken=${nextPageToken}`
+        : fireStoreUris.events;
       const res = await axios.get(api);
-      const json: BlogsJson = res.data;
+      const json: EventsJson = res.data;
 
       return {
-        blogs: json.documents.map(document => {
+        events: json.documents.map(document => {
           const date = new Date(document.fields.created_at.timestampValue);
           const year = date.getFullYear();
           const month = date.getMonth() + 1;
@@ -89,9 +81,6 @@ export const fetchBlogs = createAsync(
             id: +document.fields.id.integerValue,
             title: document.fields.title.stringValue,
             url: document.fields.url.stringValue,
-            tags: document.fields.tags.arrayValue.values.map(
-              value => value.stringValue
-            ),
             created_at: `${year}年${month}月${day}日`
           };
         }),
@@ -99,7 +88,7 @@ export const fetchBlogs = createAsync(
       };
     } catch (error) {
       console.error(error);
-      throw new Error("don't blogs fetch");
+      throw new Error("don't events fetch");
     }
   }
 );

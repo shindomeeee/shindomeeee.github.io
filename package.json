@@ -71,7 +71,7 @@
     "test": "jest",
     "coverage": "jest --coverage",
     "deploy": "gatsby build && gh-pages -d public -b master",
-    "tcm": "tcm -p src/styles/**/*.css --watch"
+    "css:d.ts": "tcm -p **/*.module.css"
   },
   "repository": {
     "type": "git",

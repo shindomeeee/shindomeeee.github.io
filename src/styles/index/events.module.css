@@ -1,4 +1,4 @@
-.blogsSection {
+.eventsSection {
   margin: 0 auto;
   width: 85%;
   padding: 1%;
@@ -9,6 +9,15 @@
 
 .disable {
   display: none;
+}
+
+.eventsSection {
+  margin: 0 auto;
+  width: 85%;
+  padding: 1%;
+  border: 1px solid black;
+  border-radius: 0 5px 5px 5px;
+  background-color: #eeeeee;
 }
 
 .moreReadButton {
@@ -29,6 +38,7 @@
   user-select: none;
   cursor: pointer;
 }
+
 .moreReadButtonHidden {
   display: none;
 }

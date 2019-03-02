@@ -3,7 +3,7 @@ import thunk from "redux-thunk";
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-describe("THUNKS_FETCH_BLOGS when return set state", () => {
+describe("THUNKS_FETCH_EVENTS when return set state", () => {
   beforeEach(() => {
     jest.resetModules();
   });
@@ -20,17 +20,17 @@ describe("THUNKS_FETCH_BLOGS when return set state", () => {
     });
 
     const store = mockStore({});
-    const { fetchBlogs } = require("@thunks/blogs");
+    const { fetchEvents } = require("@thunks/events");
 
-    await store.dispatch(fetchBlogs.action());
+    await store.dispatch(fetchEvents.action());
     const actions = store.getActions();
     expect(actions).toEqual([
-      { type: fetchBlogs.async.started.type, payload: undefined },
+      { type: fetchEvents.async.started.type, payload: undefined },
       {
-        type: fetchBlogs.async.done.type,
+        type: fetchEvents.async.done.type,
         payload: {
           params: undefined,
-          result: { blogs: [], nextPageToken: null }
+          result: { events: [], nextPageToken: null }
         }
       }
     ]);
@@ -49,18 +49,10 @@ describe("THUNKS_FETCH_BLOGS when return set state", () => {
                 integerValue: "1"
               },
               title: {
-                stringValue: "blog name1"
+                stringValue: "event name1"
               },
               url: {
                 stringValue: "https://example.com"
-              },
-              tags: {
-                arrayValue: {
-                  values: [
-                    { stringValue: "テストイベント1" },
-                    { stringValue: "テストイベント2" }
-                  ]
-                }
               },
               created_at: {
                 timestampValue: "2014-10-02T15:01:23.045123Z"
@@ -73,23 +65,22 @@ describe("THUNKS_FETCH_BLOGS when return set state", () => {
     });
 
     const store = mockStore({});
-    const { fetchBlogs } = require("@thunks/blogs");
+    const { fetchEvents } = require("@thunks/events");
 
-    await store.dispatch(fetchBlogs.action());
+    await store.dispatch(fetchEvents.action());
     const actions = store.getActions();
     expect(actions).toEqual([
-      { type: fetchBlogs.async.started.type, payload: undefined },
+      { type: fetchEvents.async.started.type, payload: undefined },
       {
-        type: fetchBlogs.async.done.type,
+        type: fetchEvents.async.done.type,
         payload: {
           params: undefined,
           result: {
-            blogs: [
+            events: [
               {
                 id: 1,
-                title: "blog name1",
+                title: "event name1",
                 url: "https://example.com",
-                tags: ["テストイベント1", "テストイベント2"],
                 created_at: "2014年10月3日"
               }
             ],
@@ -113,18 +104,10 @@ describe("THUNKS_FETCH_BLOGS when return set state", () => {
                 integerValue: "1"
               },
               title: {
-                stringValue: "blog name1"
+                stringValue: "event name1"
               },
               url: {
                 stringValue: "https://example.com"
-              },
-              tags: {
-                arrayValue: {
-                  values: [
-                    { stringValue: "テストイベント1" },
-                    { stringValue: "テストイベント2" }
-                  ]
-                }
               },
               created_at: {
                 timestampValue: "2014-10-02T15:01:23.045123Z"
@@ -137,26 +120,25 @@ describe("THUNKS_FETCH_BLOGS when return set state", () => {
     });
 
     const store = mockStore({});
-    const { fetchBlogs } = require("@thunks/blogs");
+    const { fetchEvents } = require("@thunks/events");
 
-    await store.dispatch(fetchBlogs.action("http://api.example.com"));
+    await store.dispatch(fetchEvents.action("http://api.example.com"));
     const actions = store.getActions();
     expect(actions).toEqual([
       {
-        type: fetchBlogs.async.started.type,
+        type: fetchEvents.async.started.type,
         payload: "http://api.example.com"
       },
       {
-        type: fetchBlogs.async.done.type,
+        type: fetchEvents.async.done.type,
         payload: {
           params: "http://api.example.com",
           result: {
-            blogs: [
+            events: [
               {
                 id: 1,
-                title: "blog name1",
+                title: "event name1",
                 url: "https://example.com",
-                tags: ["テストイベント1", "テストイベント2"],
                 created_at: "2014年10月3日"
               }
             ],
@@ -180,18 +162,10 @@ describe("THUNKS_FETCH_BLOGS when return set state", () => {
                 integerValue: "1"
               },
               title: {
-                stringValue: "blog name1"
+                stringValue: "event name1"
               },
               url: {
                 stringValue: "https://example.com"
-              },
-              tags: {
-                arrayValue: {
-                  values: [
-                    { stringValue: "テストイベント1" },
-                    { stringValue: "テストイベント2" }
-                  ]
-                }
               },
               created_at: {
                 timestampValue: "2014-10-02T15:01:23.045123Z"
@@ -204,26 +178,25 @@ describe("THUNKS_FETCH_BLOGS when return set state", () => {
     });
 
     const store = mockStore({});
-    const { fetchBlogs } = require("@thunks/blogs");
+    const { fetchEvents } = require("@thunks/events");
 
-    await store.dispatch(fetchBlogs.action());
+    await store.dispatch(fetchEvents.action());
     const actions = store.getActions();
     expect(actions).toEqual([
       {
-        type: fetchBlogs.async.started.type,
+        type: fetchEvents.async.started.type,
         payload: undefined
       },
       {
-        type: fetchBlogs.async.done.type,
+        type: fetchEvents.async.done.type,
         payload: {
           params: undefined,
           result: {
-            blogs: [
+            events: [
               {
                 id: 1,
-                title: "blog name1",
+                title: "event name1",
                 url: "https://example.com",
-                tags: ["テストイベント1", "テストイベント2"],
                 created_at: "2014年10月3日"
               }
             ],
@@ -241,19 +214,19 @@ describe("THUNKS_FETCH_BLOGS when return set state", () => {
     axios.get.mockRejectedValue(new Error("fetch error"));
 
     const store = mockStore({});
-    const { fetchBlogs } = require("@thunks/blogs");
+    const { fetchEvents } = require("@thunks/events");
 
     try {
-      await store.dispatch(fetchBlogs.action());
+      await store.dispatch(fetchEvents.action());
     } catch (error) {
       const actions = store.getActions();
       expect(actions).toEqual([
-        { type: fetchBlogs.async.started.type, payload: undefined },
+        { type: fetchEvents.async.started.type, payload: undefined },
         {
-          type: fetchBlogs.async.failed.type,
+          type: fetchEvents.async.failed.type,
           error: true,
           payload: {
-            error: new Error("don't blogs fetch"),
+            error: new Error("don't events fetch"),
             params: undefined
           }
         }
@@ -265,30 +238,28 @@ describe("THUNKS_FETCH_BLOGS when return set state", () => {
     process.env.NODE_ENV = "development";
 
     const store = mockStore({});
-    const { fetchBlogs } = require("@thunks/blogs");
+    const { fetchEvents } = require("@thunks/events");
 
-    await store.dispatch(fetchBlogs.action());
+    await store.dispatch(fetchEvents.action());
     const actions = store.getActions();
     expect(actions).toEqual([
-      { type: fetchBlogs.async.started.type, payload: undefined },
+      { type: fetchEvents.async.started.type, payload: undefined },
       {
-        type: fetchBlogs.async.done.type,
+        type: fetchEvents.async.done.type,
         payload: {
           params: undefined,
           result: {
-            blogs: [
+            events: [
               {
                 id: 1,
-                title: "blog 1",
+                title: "event 1",
                 url: "http://example.com",
-                tags: ["aaa", "aaa"],
                 created_at: "2014年10月3日"
               },
               {
                 id: 2,
-                title: "blog 2",
+                title: "event 2",
                 url: "http://example.com",
-                tags: ["bbb", "bbb"],
                 created_at: "2014年10月3日"
               }
             ],

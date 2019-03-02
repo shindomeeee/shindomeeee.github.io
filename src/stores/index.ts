@@ -2,9 +2,11 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { blogsReducer, BlogsState } from "@states/blogs";
+import { eventsReducer, EventsState } from "@states/events";
 
 export interface AppState {
   blogs: BlogsState;
+  events: EventsState;
 }
 
 const composeEnhancers = composeWithDevTools({});
@@ -19,7 +21,8 @@ const createCompose =
 
 export const rootReducer = () =>
   combineReducers<AppState>({
-    blogs: blogsReducer
+    blogs: blogsReducer,
+    events: eventsReducer
   });
 export const store = createStore(
   rootReducer(),
