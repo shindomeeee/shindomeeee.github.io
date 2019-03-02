@@ -16,6 +16,6 @@ export const seoDefines: SeoDefines = {
   description: "テックな集まり",
   title: "shin・DO・meeeee",
   author: "@UltraBirdTech",
-  keywords: [],
+  keywords: ["techbookfest", "技術書典"],
   meta: []
 };

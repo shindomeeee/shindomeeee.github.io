@@ -11,10 +11,7 @@ store.dispatch<any>(fetchEvents.action());
 const IndexPage = () => {
   return (
     <>
-      <SEO
-        title="shin・DO・meeee"
-        keywords={[`gatsby`, `application`, `react`]}
-      />
+      <SEO />
       <Container />
     </>
   );
