@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "shindomeeee.github.io",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "tech hp",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "syo igarashi",
   "dependencies": {
     "axios": "^0.18.0",
     "gatsby": "^2.1.0",
@@ -60,7 +60,8 @@
     "typescript": "^3.3.3"
   },
   "keywords": [
-    "gatsby"
+    "shindomeeee",
+    "techbookfest"
   ],
   "license": "MIT",
   "scripts": {
