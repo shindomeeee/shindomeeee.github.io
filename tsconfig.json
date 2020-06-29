@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "outDir": "./public/",
+    "baseUrl": "./",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "target": "esnext",
+    "jsx": "react",
+    "lib": ["dom", "es2015", "es2017"],
+    "paths": {
+      "@pages/*": ["./src/pages/*"],
+      "@images/*": ["./src/images/*"],
+      "@components/*": ["./src/components/*"],
+      "@defines/*": ["./src/defines/*"],
+      "@actions/*": ["./src/actions/*"],
+      "@containers/*": ["./src/containers/*"],
+      "@states/*": ["./src/states/*"],
+      "@thunks/*": ["./src/thunks/*"],
+      "@stores/*": ["./src/stores/*"],
+      "@styles/*": ["./src/styles/*"]
+    }
+  },
+  "include": ["./**/*"],
+  "strict": true,
+  "esModuleInterop": false
+}

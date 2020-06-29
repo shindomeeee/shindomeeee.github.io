@@ -1,0 +1,19 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+@media (--pcWidthMobileHeightScreenSize) {
+  body {
+    height: var(--mobileHeight);
+  }
+}
+
+body > div[id="___gatsby"],
+body > div[id="___gatsby"] > div {
+  height: 100%;
+}

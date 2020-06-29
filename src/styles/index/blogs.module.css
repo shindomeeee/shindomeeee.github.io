@@ -1,0 +1,34 @@
+.blogsSection {
+  margin: 0 auto;
+  width: 85%;
+  padding: 1%;
+  border: 1px solid black;
+  border-radius: 0 5px 5px 5px;
+  background-color: #eeeeee;
+}
+
+.disable {
+  display: none;
+}
+
+.moreReadButton {
+  display: block;
+  width: 240px;
+  box-sizing: border-box;
+  margin: 0.5rem auto;
+  padding: 0.75rem;
+  font-size: 1rem;
+  text-align: center;
+  text-transform: uppercase;
+  color: white;
+  border: none;
+  background: #f2ccdd;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.25rem #f2ccdd;
+  outline: none;
+  user-select: none;
+  cursor: pointer;
+}
+.moreReadButtonHidden {
+  display: none;
+}

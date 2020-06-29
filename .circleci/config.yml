@@ -1,0 +1,29 @@
+version: 2
+general:
+  branches:
+    ignore:
+      - master
+jobs:
+  build:
+    working_directory: ~/project
+    docker:
+      - image: node:alpine
+        environment:
+          TZ: Asia/Tokyo
+    steps:
+      - checkout
+      - run:
+          name: install-npm-wee
+          command: npm install
+      - run:
+          name: test
+          command: npm test
+      - run:
+          name: code-coverage
+          command: npm run coverage
+      - run:
+          name: send-coverage-report
+          command: cat ./coverage/lcov.info | ./node_modules/codeclimate-test-reporter/bin/codeclimate.js
+      - run:
+          name: build
+          command: npm run build

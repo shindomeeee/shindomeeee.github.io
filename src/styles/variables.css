@@ -1,0 +1,9 @@
+:root {
+  --mobileWidth: 500px;
+  --mobileHeight: 840px;
+}
+
+/* 横幅がPCの時 */
+@custom-media --pcWidthScreenSize screen and (min-width: 500px);
+/* 横幅がPCで高さ足りないとき */
+@custom-media --pcWidthMobileHeightScreenSize screen and (min-width: 500px) and (max-height: 840px);
