@@ -12,6 +12,12 @@ yarn
 yarn start
 ```
 
+## download api json
+
+```
+yarn json
+```
+
 ## deploy
 
 ```

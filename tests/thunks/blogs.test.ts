@@ -9,7 +9,6 @@ describe("THUNKS_FETCH_BLOGS when return set state", () => {
   });
 
   test("check return not value", async () => {
-    process.env.NODE_ENV = "production";
     jest.mock("axios");
     const axios = require("axios");
     axios.get.mockResolvedValue({
@@ -37,7 +36,6 @@ describe("THUNKS_FETCH_BLOGS when return set state", () => {
   });
 
   test("check return 1 value", async () => {
-    process.env.NODE_ENV = "production";
     jest.mock("axios");
     const axios = require("axios");
     axios.get.mockResolvedValue({
@@ -101,7 +99,6 @@ describe("THUNKS_FETCH_BLOGS when return set state", () => {
   });
 
   test("check nextPageToken payload (params)", async () => {
-    process.env.NODE_ENV = "production";
     jest.mock("axios");
     const axios = require("axios");
     axios.get.mockResolvedValue({
@@ -168,7 +165,6 @@ describe("THUNKS_FETCH_BLOGS when return set state", () => {
   });
 
   test("check nextPageToken in response json", async () => {
-    process.env.NODE_ENV = "production";
     jest.mock("axios");
     const axios = require("axios");
     axios.get.mockResolvedValue({
@@ -235,7 +231,6 @@ describe("THUNKS_FETCH_BLOGS when return set state", () => {
   });
 
   test("fetch error", async () => {
-    process.env.NODE_ENV = "production";
     jest.mock("axios");
     const axios = require("axios");
     axios.get.mockRejectedValue(new Error("fetch error"));
@@ -259,43 +254,5 @@ describe("THUNKS_FETCH_BLOGS when return set state", () => {
         }
       ]);
     }
-  });
-
-  test("run localhost", async () => {
-    process.env.NODE_ENV = "development";
-
-    const store = mockStore({});
-    const { fetchBlogs } = require("@thunks/blogs");
-
-    await store.dispatch(fetchBlogs.action());
-    const actions = store.getActions();
-    expect(actions).toEqual([
-      { type: fetchBlogs.async.started.type, payload: undefined },
-      {
-        type: fetchBlogs.async.done.type,
-        payload: {
-          params: undefined,
-          result: {
-            blogs: [
-              {
-                id: 1,
-                title: "blog 1",
-                url: "http://example.com",
-                tags: ["aaa", "aaa"],
-                created_at: "2014年10月3日"
-              },
-              {
-                id: 2,
-                title: "blog 2",
-                url: "http://example.com",
-                tags: ["bbb", "bbb"],
-                created_at: "2014年10月3日"
-              }
-            ],
-            nextPageToken: null
-          }
-        }
-      }
-    ]);
   });
 });
