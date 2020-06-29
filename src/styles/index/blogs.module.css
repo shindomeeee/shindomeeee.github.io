@@ -1,10 +1,12 @@
 .blogsSection {
   margin: 0 auto;
   width: 85%;
+  height: 80%;
   padding: 1%;
   border: 1px solid black;
   border-radius: 0 5px 5px 5px;
   background-color: #eeeeee;
+  overflow: scroll;
 }
 
 .disable {
