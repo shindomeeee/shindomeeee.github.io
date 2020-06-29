@@ -9,7 +9,6 @@ describe("THUNKS_FETCH_EVENTS when return set state", () => {
   });
 
   test("check return not value", async () => {
-    process.env.NODE_ENV = "production";
     jest.mock("axios");
     const axios = require("axios");
     axios.get.mockResolvedValue({
@@ -37,7 +36,6 @@ describe("THUNKS_FETCH_EVENTS when return set state", () => {
   });
 
   test("check return 1 value", async () => {
-    process.env.NODE_ENV = "production";
     jest.mock("axios");
     const axios = require("axios");
     axios.get.mockResolvedValue({
@@ -92,7 +90,6 @@ describe("THUNKS_FETCH_EVENTS when return set state", () => {
   });
 
   test("check nextPageToken payload (params)", async () => {
-    process.env.NODE_ENV = "production";
     jest.mock("axios");
     const axios = require("axios");
     axios.get.mockResolvedValue({
@@ -150,7 +147,6 @@ describe("THUNKS_FETCH_EVENTS when return set state", () => {
   });
 
   test("check nextPageToken in response json", async () => {
-    process.env.NODE_ENV = "production";
     jest.mock("axios");
     const axios = require("axios");
     axios.get.mockResolvedValue({
@@ -208,7 +204,6 @@ describe("THUNKS_FETCH_EVENTS when return set state", () => {
   });
 
   test("fetch error", async () => {
-    process.env.NODE_ENV = "production";
     jest.mock("axios");
     const axios = require("axios");
     axios.get.mockRejectedValue(new Error("fetch error"));
@@ -232,41 +227,5 @@ describe("THUNKS_FETCH_EVENTS when return set state", () => {
         }
       ]);
     }
-  });
-
-  test("run localhost", async () => {
-    process.env.NODE_ENV = "development";
-
-    const store = mockStore({});
-    const { fetchEvents } = require("@thunks/events");
-
-    await store.dispatch(fetchEvents.action());
-    const actions = store.getActions();
-    expect(actions).toEqual([
-      { type: fetchEvents.async.started.type, payload: undefined },
-      {
-        type: fetchEvents.async.done.type,
-        payload: {
-          params: undefined,
-          result: {
-            events: [
-              {
-                id: 1,
-                title: "event 1",
-                url: "http://example.com",
-                created_at: "2014年10月3日"
-              },
-              {
-                id: 2,
-                title: "event 2",
-                url: "http://example.com",
-                created_at: "2014年10月3日"
-              }
-            ],
-            nextPageToken: null
-          }
-        }
-      }
-    ]);
   });
 });
