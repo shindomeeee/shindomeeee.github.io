@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[3],{"i6+/":function(e,t,n){"use strict";n.r(t);var a=n("q1tI"),r=n("xwyV");t.default=function(){return a.createElement(a.Fragment,null,a.createElement(r.a,{title:"404: Not found"}),a.createElement("h1",null,"NOT FOUND"),a.createElement("a",{href:"/"},"トップに戻る"))}}}]);
+//# sourceMappingURL=component---src-pages-404-tsx-6a7a967c86a1e7a49644.js.map
